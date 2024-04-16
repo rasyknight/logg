@@ -37,10 +37,10 @@ func intMax(i, j int) int {
 		return j
 	}
 }
-func InitLog() {
+func InitLog(fileName string) {
 	usr, _ := user.Current()
 	homeDir := usr.HomeDir
-	logFileName := homeDir + "/log/service.log"
+	logFileName := homeDir + "/log/" + fileName
 	logFile, err := os.OpenFile(logFileName, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
@@ -167,4 +167,3 @@ func GetDebugLevel(level int) string {
 func GetDebug() int {
 	return logInf.LogLevel
 }
-
